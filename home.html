@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBI Inspired Home Page</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1c1c1c;
+            color: #ffcc00;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 3px solid #ffcc00;
+            animation: fadeIn 2s ease-in;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #1c1c1c;
+            border-bottom: 2px solid #ffcc00;
+        }
+        nav a {
+            color: #ffcc00;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid transparent;
+            transition: border 0.3s, background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 50%;
+            top: 50%;
+            background: rgba(255, 204, 0, 0.3);
+            transition: transform 0.5s ease;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+        nav a:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        nav a:hover {
+            border: 1px solid #ffcc00;
+            background-color: rgba(255, 204, 0, 0.1);
+            color: #ffcc00;
+        }
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            font-size: 4em;
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.9);
+            letter-spacing: 2px;
+            animation: zoomIn 1s ease forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+        .main a {
+            color: #ffffff;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s, color 0.3s;
+        }
+        .main a:hover {
+            transform: scale(1.1);
+            color: #ffcc00;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>retard.club</h1>
+</header>
+
+<nav>
+    <a href="#details">Details</a>
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="main">
+    <a href="/poisz.html">/poisz</a>
+</div>
+
+<div class="footer">
+    &copy; 2024 Retard.club. All rights reserved.
+</div>
+
+</body>
+</html>

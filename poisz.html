@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retard Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="poisz/poiszstyles.css">
+</head>
+<body>
+    <div id="overlay">
+        <h1></h1>
+        <p>$ CLICK TO ENTER RETARD $</p>
+    </div>
+
+    <video id="bg-video" autoplay muted loop>
+        <source src="assets/vecteezy_rain-drops-on-the-glass-small-raindrop-rests-on-glass-while_12140711 (1) (1).mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="username">
+        <span class="username-text">poisz</span>
+        <span class="tooltip">UID: 1</span>
+    </div>
+    
+    <div class="wrapper" style="display: none;">
+        <div class="container" id="profile-container">
+            <div class="profile-video">
+                <img src="assets/image6_34.gif" alt="Profile Picture">
+            </div>
+            <div class="username">poisz</div>
+            <div class="badge-container">
+                <div class="badge" title="Founder">
+                    <img src="assets/streamline--crown-solid.png" alt="Founder">
+                </div>
+                <div class="badge" title="Staff">
+                    <img src="assets/Staff Badge.png" alt="Staff">
+                </div>
+            </div>
+            <div class="description">/retardclub</div>
+        </div>
+    </div>
+
+    <audio id="background-music" src="assets/spotifydown.com - wonder about you.mp3" preload="auto" muted></audio>
+
+    <script>
+        const music = document.getElementById('background-music');
+
+        document.getElementById('overlay').addEventListener('click', () => {
+            music.play();
+            music.muted = false;
+            document.getElementById('overlay').style.display = 'none';
+            document.querySelector('.wrapper').style.display = 'block';
+        });
+
+        const container = document.getElementById('profile-container');
+        container.style.transformOrigin = 'center';
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            const centerX = rect.left + width / 2;
+            const centerY = rect.top + height / 2;
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+            const maxTilt = 15;
+            const rotateX = (mouseY / height) * maxTilt;
+            const rotateY = -(mouseX / width) * maxTilt;
+            container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            container.style.transform = 'rotateX(0) rotateY(0)';
+        });
+    </script>
+
+</body>
+</html>

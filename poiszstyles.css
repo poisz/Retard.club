@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1; /* Background video below everything */
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* Overlay above video but below main content */
+  text-align: center;
+  transition: opacity 0.3s;
+}
+
+.wrapper {
+  perspective: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20; /* Above overlay */
+}
+
+.container {
+  width: 600px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+  z-index: 30; /* Ensure it's above the wrapper */
+  transition: transform 0.2s ease;
+}
+
+#profile-container:hover {
+  box-shadow: 0px 0px 20px 10px rgb(255, 255, 255);
+}
+
+.profile-video {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.profile-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.username {
+  font-size: 2em;
+  margin-top: 20px;
+  font-family: 'Playwrite GB S', cursive; /* Add this line */
+}
+
+.badge-container {
+  display: inline-flex;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.39);
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.badge {
+  margin: 0 10px;
+  position: relative;
+}
+
+.badge img {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.badge[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.description {
+  font-size: 1.2em;
+  margin-top: 20px;
+}
