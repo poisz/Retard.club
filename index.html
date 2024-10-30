@@ -5,119 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retard Club</title>
     <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #0a0a0a;
-            color: #ffffff;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1d, #0c0c0f);
+            color: #d1d1e0;
             line-height: 1.6;
+            scroll-behavior: smooth; 
         }
+
         header {
-            background-color: #1c1c1c;
-            color: #ffcc00;
-            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #2a2a2d, #1a1a1d);
+            color: #bb86fc;
+            padding: 20px;
             text-align: center;
-            border-bottom: 3px solid #ffcc00;
-            animation: fadeIn 2s ease-in;
+            border-bottom: 3px solid #bb86fc;
+            box-shadow: 0 4px 10px rgba(187, 134, 252, 0.2);
+            z-index: 1000; 
         }
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+        }
+
         nav {
             display: flex;
             justify-content: center;
-            background-color: #1c1c1c;
-            border-bottom: 2px solid #ffcc00;
+            padding: 10px;
+            background-color: transparent;
         }
         nav a {
-            color: #ffcc00;
-            padding: 14px 20px;
+            color: #bb86fc;
+            padding: 10px 20px;
+            margin: 0 10px;
             text-decoration: none;
-            text-align: center;
+            font-size: 1.2rem;
             font-weight: bold;
-            border: 1px solid transparent;
-            transition: border 0.3s, background-color 0.3s;
             position: relative;
-            overflow: hidden;
-        }
-        nav a::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 50%;
-            top: 50%;
-            background: rgba(255, 204, 0, 0.3);
-            transition: transform 0.5s ease;
-            transform: translate(-50%, -50%) scale(0);
-            z-index: 0;
-        }
-        nav a:hover::before {
-            transform: translate(-50%, -50%) scale(1);
+            transition: color 0.3s, transform 0.3s;
         }
         nav a:hover {
-            border: 1px solid #ffcc00;
-            background-color: rgba(255, 204, 0, 0.1);
-            color: #ffcc00;
+            color: #ffffff;
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8);
         }
+
         .main {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
-            font-size: 4em;
-            text-shadow: 0 0 20px rgba(255, 204, 0, 0.9);
+            height: 75vh; 
+            font-size: 3rem;
+            color: #bb86fc;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8);
             letter-spacing: 2px;
-            animation: zoomIn 1s ease forwards;
             opacity: 0;
-            animation-delay: 0.5s;
+            animation: fadeInZoom 1.5s ease forwards;
         }
         .main a {
-            color: #ffffff;
+            color: #bb86fc;
             text-decoration: none;
-            position: relative;
-            display: inline-block;
-            transition: transform 0.3s, color 0.3s;
+            padding: 10px 20px;
+            border: 2px solid #bb86fc;
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
         }
         .main a:hover {
+            background-color: #bb86fc;
+            color: #1c1c1c;
             transform: scale(1.1);
-            color: #ffcc00;
         }
-        .footer {
-            position: fixed;
-            bottom: 10px;
-            width: 100%;
+
+        /* Section styles */
+        section {
+            padding: 60px 20px;
+            margin: 100px 0; 
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            flex-direction: column;
             text-align: center;
-            font-size: 0.8em;
+        }
+        h2 {
+            font-size: 2.5rem;
+            color: #bb86fc;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        .highlight {
+            color: #bb86fc;
+            font-weight: bold;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        /* Footer styles */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #2a2a2d;
             color: #aaa;
+            font-size: 0.8rem;
+            box-shadow: 0 -4px 10px rgba(187, 134, 252, 0.2);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes zoomIn {
-            from { transform: scale(0.5); opacity: 0; }
+
+        /* Animations */
+        @keyframes fadeInZoom {
+            from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            nav a {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>retard.club</h1>
+    <h1>Retard Club</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#details">Details</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<nav>
-    <a href="#details">Details</a>
-    <a href="#about">About Us</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="main">
-    <a href="/poisz">/poisz</a>
+<div id="home" class="main">
+    <a href="/poisz">Enter /poisz</a>
 </div>
 
+<section id="details">
+    <h2>Details</h2>
+    <p>Welcome to <span class="highlight">Retard Club</span>, where we embrace creativity and unconventional thinking. Our mission is to foster a community of like-minded individuals who challenge societal norms and push the boundaries of what’s possible.</p>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>Retard Club is a space where intellectuals, creators, and free thinkers can connect and collaborate. Whether you're an artist, coder, or someone with a unique vision, this is the place for you.</p>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <ul>
+        <li>Monthly virtual meet-ups to discuss out-of-the-box ideas.</li>
+        <li>Exclusive collaborative projects for members.</li>
+        <li>Private events with thought leaders and experts.</li>
+        <li>A safe platform for creative expression, sharing, and feedback.</li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have any questions or want to join us? <a href="mailto:info@retardclub.com" style="color: #bb86fc; text-decoration: underline;">Email us</a> and we’ll get back to you!</p>
+</section>
+
 <div class="footer">
-    &copy; 2024 Retard.club. All rights reserved.
+    &copy; 2024 Retard Club. All rights reserved.
 </div>
 
 </body>
